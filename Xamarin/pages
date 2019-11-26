@@ -1,0 +1,18 @@
+PAGES - are the root of the UI hierarchy in Xamarin.Forms
+
+the class MainPage derives from ContentPage, wich is the simplest and mosto common page type.
+CONTENT PAGE simply displays its contents.
+
+OTHER TYPES OF PAGES:
+
+    - MasterDetailPage: hosts tdrawer type navigation as well as split views. Has 2 key properties, Master and Detail -> both assigned a ContentPage
+
+    - NavigationPage: adds the navigation bar to the top of the screen. Manages a navigation stack -> allows the user to navigate backward to previous screen
+
+    - TabbedPage: this is the root page used for tab navigation
+
+
+VIEWS - are like controls for buttons, sliders, menus etc
+
+LAYOUT - flexible system that set the rules by which your controls (from the view) will be laid out
+são como presets que facilitam a organização dos objetos do app na cena
