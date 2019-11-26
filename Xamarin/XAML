@@ -1,0 +1,83 @@
+Temos 3 projetos na nossa solutions:
+
+1 - PHONEWORD (MASTER) -> projeto que une o código multiplataforma
+
+2 - HeadProjects
+    2.a -> PhoneWord.Android
+    2.b -> Phoneword.IOS
+
+Ambos permitem que o projeto principal controle nativamente os SDK e serviços do OS de cada plataforma
+
+
+A CLASSE APP.XAML
+
+herda da classe Xamarin.Forms.Application
+representa a aplicação como um todo
+É a classe que é instanciada e loadada pelos headProjects
+O constructor dessa classe usualmente define a sua prórpia propriedade de MainPage. Essa propriade controla a primeira tela vista pelo usuário
+
+A CLASS APP TAMBÉM TEM
+
+    - Métodos para manosear life cycle events (incluindo quando o app é enviado para o background (minimizado)
+    - Eventos para responder as mudanças na modal stack
+    - uma propriedade chamada PROPERTIES. Ela é uma PropertyBag que automaticamente persiste qualquer dado adicionado
+
+PROPRIEDADES E TIPOS
+
+The first step in using XAML to build a UI is instantiating the UI control types. In XAML, 
+we can create types by using Object Element Syntax.
+
+OES -> serve para declarar o elemento que queremos instanciar. Se quisermos declarar uma label emm XAML:
+
+<label />
+
+SEMPRE UTILIZANDO <elemento />
+
+Em C#, ficaria: new Label ();
+
+Dessa forma o Xamarin.Forms entende que, esse objeto se trata de uma Label (e assim, sabe como projetá-lo na cena)
+
+O QUE É UM NAMESPACE
+
+É uma forma de especificar a localização do "dicionário" que traduz nossos elementos declarados, para objetos na cena. 
+Dessa forma, o Xamarin.Forms consegue interpretar o XAML e instanciar tais objetos de uma forma pre-definida.
+
+O default: 
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sample.MyPage">
+</ContentPage>
+
+COMO ESPECIFICAR VALORES DE PROPRIEDADES EM XAML
+
+Utilizamos ATRIBUTOS para definir propriedades:
+
+<Label Text="Username" TextColor="Black" />
+
+EM C#:
+
+new Label {Text = "Username", TextColor = Color.Black}
+
+
+Diferentemente do C#, no XAML, utilizamos STRINGS para definir valores. 
+
+Para que esses valores em STRINGS sejam traduzidos para seus respectivos tipos (cor, etc), ele utiliza TYPE CONVERTERS
+
+Para a maior parte de propriedades, ele possuí esse TYPE CONVERTERS, mas caso não possua, é possível criar um.
+
+Complex type assignment - em alguns casos, é necessário criar objetos com suas próprias propriedades:
+
+<Label Text="Username" TextColor="Black" FontSize="42" FontAttributes="Bold,Italic">
+    <Label.GestureRecognizers>
+        <TapGestureRecognizer NumberOfTapsRequired="2" />
+    </Label.GestureRecognizers>
+</Label>
+
+Label has a property called GestureRecognizers, by using Property Element form, 
+we can add our TapGestureRecognizer to the Label's list of gestures.
+
+
+
+
+
